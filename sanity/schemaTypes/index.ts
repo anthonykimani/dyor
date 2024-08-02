@@ -1,5 +1,5 @@
 import airdrop from "./airdrop";
-import blog from "./blog";
+import article from "./article";
 import podcast from "./podcast";
 
-export const schemaTypes = [blog, podcast, airdrop]
+export const schemaTypes = [article, podcast, airdrop]

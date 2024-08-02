@@ -4,11 +4,6 @@ export default {
   title: 'Airdrop',
   fields: [
     {
-      name: "id",
-      type: "number",
-      title: "Id"
-    },
-    {
       name: 'title',
       type: 'string',
       title: 'Title of Airdrop Guide',
@@ -22,9 +17,21 @@ export default {
       },
     },
     {
-      name: 'imageUrl',
-      type: 'image',
-      title: 'Image Url',
+      name:'image',
+      type: 'object',
+      title: 'Image (Image fields are Optional)',
+      fields: [
+        {
+          name: 'imageUrl',
+          type: 'image',
+          title: 'Image Url (Optional)',
+        },
+        {
+          name: 'imageUrlLink',
+          type: 'image',
+          title: 'Image Url Link (Optional)',
+        },
+      ]
     },
     {
       name: 'description',
@@ -38,8 +45,25 @@ export default {
     },
     {
       name: 'link',
-      type: 'url',
-      title: 'Airdrop Guide Link',
+      type: 'object',
+      title: 'Airdrop Episode Link',
+      fields: [
+        {
+          name: 'spotifyLink',
+          type: 'string',
+          title: 'Spotify Episode Link'
+        },
+        {
+          name: 'youtubeLink',
+          type: 'string',
+          title: 'Youtube Episode Link'
+        },
+        {
+          name: 'airdropLink',
+          type: 'string',
+          title: 'Airdrop Link'
+        },
+      ]
     },
     {
       name: 'category',
@@ -51,39 +75,29 @@ export default {
           type: 'string',
           title: 'Title',
         },
-        {
-          name: 'href',
-          type: 'string',
-          title: 'Href',
-        },
       ],
     },
     {
-      name: 'author',
+      name: 'socials',
       type: 'object',
-      title: 'Author',
+      title: 'Social Media Handles (Optional)',
       fields: [
         {
-          name: 'name',
+          name: 'twitter',
           type: 'string',
-          title: 'Name',
+          title: 'X formely Twitter',
         },
         {
-          name: 'role',
+          name: 'discord',
           type: 'string',
-          title: 'Role',
+          title: 'Discord',
         },
         {
-          name: 'imageUrl',
-          type: 'image',
-          title: 'Image Url',
-        },
-        {
-          name: 'href',
+          name: 'telegram',
           type: 'string',
-          title: 'Href',
-        },
-      ],
+          title: 'Telegram',
+        }
+      ]
     },
     {
       name: 'content',

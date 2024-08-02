@@ -1,17 +1,17 @@
 export default {
-  name: 'podcast',
+  name: 'article',
   type: 'document',
-  title: 'Podcast',
+  title: 'Article',
   fields: [
     {
       name: 'title',
       type: 'string',
-      title: 'Title of Podcast Episode',
+      title: 'Title of Article',
     },
     {
       name: 'slug',
       type: 'slug',
-      title: 'Slug of Podcast Episode',
+      title: 'Slug of Article',
       options: {
         source: 'title',
       },
@@ -28,7 +28,7 @@ export default {
         },
         {
           name: 'imageUrlLink',
-          type: 'string',
+          type: 'image',
           title: 'Image Url Link (Optional)',
         },
       ]
@@ -46,36 +46,14 @@ export default {
     {
       name: 'link',
       type: 'object',
-      title: 'Podcast Episode Link',
+      title: 'Blog Link',
       fields: [
-        {
-          name: 'spotifyLink',
-          type: 'string',
-          title: 'Spotify Episode Link'
-        },
-        {
-          name: 'youtubeLink',
-          type: 'string',
-          title: 'Youtube Episode Link'
-        },
         {
           name: 'mediumLink',
           type: 'string',
-          title: 'Medium Blog Episode Link'
+          title: 'Medium Episode Link'
         },
       ]
-    },
-    {
-      name: 'category',
-      type: 'object',
-      title: 'Technology Category',
-      fields: [
-        {
-          name: 'title',
-          type: 'string',
-          title: 'Title',
-        },
-      ],
     },
     {
       name: 'socials',
@@ -100,29 +78,14 @@ export default {
       ]
     },
     {
-      name: 'guest',
+      name: 'category',
       type: 'object',
-      title: 'Guest Interviewer',
+      title: 'Category',
       fields: [
         {
-          name: 'name',
+          name: 'title',
           type: 'string',
-          title: 'Name',
-        },
-        {
-          name: 'role',
-          type: 'string',
-          title: 'Role',
-        },
-        {
-          name: 'imageUrl',
-          type: 'image',
-          title: 'Image Url (Optional)',
-        },
-        {
-          name: 'imageUrlLink',
-          type: 'string',
-          title: 'Image Url Link (Optional)',
+          title: 'Title',
         },
       ],
     },
