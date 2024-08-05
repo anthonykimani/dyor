@@ -30,18 +30,18 @@ import {
 import Link from "next/link";
 
 const navigation = [
-  { name: "Articles", href: "#", icon: UsersIcon, current: false },
-  { name: "Live Shows", href: "#", icon: FolderIcon, current: false },
-  { name: "Podcasts Episodes", href: "#", icon: CalendarIcon, current: false },
-  { name: "X Spaces", href: "#", icon: DocumentDuplicateIcon, current: false },
+  { name: "Articles", href: "/articles", icon: UsersIcon, current: false },
+  { name: "Live Shows", href: "/live_shows", icon: FolderIcon, current: false },
+  { name: "Podcasts Episodes", href: "/podcasts_episodes", icon: CalendarIcon, current: false },
+  { name: "X Spaces", href: "/x_spaces", icon: DocumentDuplicateIcon, current: false },
 ];
 const teams = [
-  { id: 1, name: "Dashboard", href: "#", initial: "H", current: false },
+  { id: 1, name: "Dashboard", href: "/dashboard", initial: "H", current: false },
 
 ];
 
 const tools = [
-    { name: "Airdrop Hunters", href: "#", icon: ChartPieIcon, current: false },
+    { name: "Airdrop Hunters", href: "/airdrop_hunters", icon: ChartPieIcon, current: false },
   
   ];
 
@@ -128,7 +128,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                          <ul role="list" className="-mx-2 mt-2 space-y-1">
                            {teams.map((team) => (
                              <li key={team.name}>
-                               <a
+                               <Link
                                  href={team.href}
                                  className={classNames(
                                    team.current
@@ -141,7 +141,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                                    {team.initial}
                                  </span>
                                  <span className="truncate">{team.name}</span>
-                               </a>
+                               </Link>
                              </li>
                            ))}
                          </ul>
@@ -153,7 +153,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                           <ul role="list" className="-mx-2 space-y-1">
                             {navigation.map((item) => (
                               <li key={item.name}>
-                                <a
+                                <Link
                                   href={item.href}
                                   className={classNames(
                                     item.current
@@ -167,7 +167,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                                     aria-hidden="true"
                                   />
                                   {item.name}
-                                </a>
+                                </Link>
                               </li>
                             ))}
                           </ul>
@@ -207,7 +207,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                   <ul role="list" className="-mx-2 mt-2 space-y-1">
                     {teams.map((team) => (
                       <li key={team.name}>
-                        <a
+                        <Link
                           href={team.href}
                           className={classNames(
                             team.current
@@ -220,7 +220,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                             {team.initial}
                           </span>
                           <span className="truncate">{team.name}</span>
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -232,7 +232,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                   <ul role="list" className="-mx-2 space-y-1">
                     {navigation.map((item) => (
                       <li key={item.name}>
-                        <a
+                        <Link
                           href={item.href}
                           className={classNames(
                             item.current
@@ -246,7 +246,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                             aria-hidden="true"
                           />
                           {item.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -258,7 +258,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                   <ul role="list" className="-mx-2 space-y-1">
                     {tools.map((item) => (
                       <li key={item.name}>
-                        <a
+                        <Link
                           href={item.href}
                           className={classNames(
                             item.current
@@ -272,7 +272,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                             aria-hidden="true"
                           />
                           {item.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -366,7 +366,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                       {userNavigation.map((item) => (
                         <MenuItem key={item.name}>
                           {({ active }) => (
-                            <a
+                            <Link
                               href={item.href}
                               className={classNames(
                                 active ? "bg-gray-50" : "",
@@ -374,7 +374,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                               )}
                             >
                               {item.name}
-                            </a>
+                            </Link>
                           )}
                         </MenuItem>
                       ))}

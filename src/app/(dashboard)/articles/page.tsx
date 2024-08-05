@@ -1,11 +1,11 @@
+import Articles from '@/components/dashboard/articles/articles'
 import React from 'react'
 
-const Articles = () => {
+const ArticlesPage = () => {
   return (
-    <div>
-      Articles
-    </div>
+    //  @ts-expect-error 
+    <Articles />
   )
 }
 
-export default Articles
+export default ArticlesPage
