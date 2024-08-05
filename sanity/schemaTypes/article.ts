@@ -28,7 +28,7 @@ export default {
         },
         {
           name: 'imageUrlLink',
-          type: 'image',
+          type: 'string',
           title: 'Image Url Link (Optional)',
         },
       ]
@@ -53,6 +53,21 @@ export default {
           type: 'string',
           title: 'Medium Episode Link'
         },
+        {
+          name: 'youtubeLink',
+          type: 'string',
+          title: 'Youtube Link'
+        },
+        {
+          name: 'githubLink',
+          type: 'string',
+          title: 'Github Link'
+        },
+        {
+          name: 'projectLink',
+          type: 'string',
+          title: 'Project Link'
+        },
       ]
     },
     {
@@ -63,17 +78,17 @@ export default {
         {
           name: 'twitter',
           type: 'string',
-          title: 'X formely Twitter',
+          title: 'X formely Twitter Post Link',
         },
         {
           name: 'discord',
           type: 'string',
-          title: 'Discord',
+          title: 'Discord Post Link',
         },
         {
           name: 'telegram',
           type: 'string',
-          title: 'Telegram',
+          title: 'Telegram Post Link',
         }
       ]
     },
@@ -83,9 +98,46 @@ export default {
       title: 'Category',
       fields: [
         {
-          name: 'title',
+          name: 'articleType',
           type: 'string',
-          title: 'Title',
+          title: 'Article Type',
+        },
+        {
+          name: 'articleEcosystem',
+          type: 'string',
+          title: 'Article Ecosystem',
+        },
+      ],
+    },
+    {
+      name: 'author',
+      type: 'object',
+      title: 'Author of Article (Optional)',
+      fields: [
+        {
+          name: 'name',
+          type: 'string',
+          title: 'Name',
+        },
+        {
+          name: 'role',
+          type: 'string',
+          title: 'Role',
+        },
+        {
+          name: 'imageUrl',
+          type: 'image',
+          title: 'Image Url',
+        },
+        {
+          name: 'imageUrlLink',
+          type: 'string',
+          title: 'Image Url Link (Optional)',
+        },
+        {
+          name: 'authorLink',
+          type: 'string',
+          title: 'Author Link',
         },
       ],
     },

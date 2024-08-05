@@ -1,5 +1,7 @@
-"use client";
-
+import { client, urlFor } from "@/lib/sanity";
+import { SpotlightInterface } from "@/types/interface";
+import Link from "next/link";
+import { format } from "date-fns";
 
 const posts = [
   {
@@ -62,7 +64,38 @@ const posts = [
   // More posts...
 ]
 
-export const Spotlight = () => {
+async function getData() {
+  const query = `*[_type == 'spotlight'] | order(_createdAt desc){
+      title,
+      description,
+      "currentSlug": slug.current,
+      "imageUrl": image.imageUrl.asset._ref,
+      "imageUrlLink": image.imageUrlLink,
+      "dateTime": _createdAt,
+      "mediumLink": link.mediumLink,
+      "youtubeLink": link.youtubeLink,
+      "githubLink": link.githubLink,
+      "projectLink": link.projectLink,
+      "twitterLink": socials.twitterLink,
+      "discordLink": socials.discordLink,
+      "telegramLink": socials.telegramLink,
+      "articleType": category.articleType,
+      "articleEcosystem": category.articleEcosystem,
+      "authorName":author.name,
+      "authorRole":author.role,
+      "authorImageUrl": author.imageUrl.asset._ref,
+      "authorImageUrlLink": author.imageUrlLink,
+      "authorLink":author.authorLink,
+      content,
+      "updatedAt": _updatedAt,
+  }`;
+
+  const data = await client.fetch(query, {}, { cache: "no-store" });
+  return data;
+}
+
+export const Spotlight = async () => {
+  const data = await getData();
   return (
     <section id="about" className="container py-24 sm:py-24">
       <div className="bg-muted/50 border rounded-lg py-12">
@@ -79,43 +112,49 @@ export const Spotlight = () => {
                 <div className="mx-auto max-w-7xl">
                  
                   <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                    {posts.map((post) => (
+                    {data.map((spotlight: SpotlightInterface) => (
                       <article
-                        key={post.id}
+                        key={spotlight.id}
                         className="flex flex-col items-start justify-between"
                       >
                         <div className="relative w-full">
-                          <img
-                            src={post.imageUrl}
+                          {
+                            spotlight.imageUrl ? <img
+                            src={urlFor(spotlight.imageUrl).url()}
                             alt=""
                             className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
-                          />
+                          /> : <img
+                          src={spotlight.imageUrlLink}
+                          alt=""
+                          className="aspect-[16/9] w-full rounded-2xl bg-red-300 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+                        />
+                          }
                           <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
                         </div>
                         <div className="max-w-xl">
                           <div className="mt-8 flex items-center gap-x-4 text-xs">
                             <time
-                              dateTime={post.datetime}
+                              dateTime={spotlight.dateTime}
                               className="text-gray-500"
                             >
-                              {post.date}
+                              {format(new Date(spotlight.dateTime), "PP")}
                             </time>
                             <a
-                              href={post.category.href}
+                              href={spotlight.spotlightType}
                               className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
                             >
-                              {post.category.title}
+                              {spotlight.spotlightType}
                             </a>
                           </div>
                           <div className="group relative">
                             <h3 className="mt-3 text-lg font-semibold leading-6 text-white group-hover:text-gray-600">
-                              <a href={post.href}>
+                              <Link href={`/spotlight/${spotlight.currentSlug}`}>
                                 <span className="absolute inset-0" />
-                                {post.title}
-                              </a>
+                                {spotlight.title}
+                              </Link>
                             </h3>
                             <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
-                              {post.description}
+                              {spotlight.description}
                             </p>
                           </div>
                          

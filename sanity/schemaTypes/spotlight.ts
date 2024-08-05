@@ -1,17 +1,17 @@
 export default {
-  name: 'podcast',
+  name: 'spotlight',
   type: 'document',
-  title: 'Podcast',
+  title: 'Spotlight',
   fields: [
     {
       name: 'title',
       type: 'string',
-      title: 'Title of Podcast Episode',
+      title: 'Title of Spotlight Content',
     },
     {
       name: 'slug',
       type: 'slug',
-      title: 'Slug of Podcast Episode',
+      title: 'Slug of Spotlight',
       options: {
         source: 'title',
       },
@@ -46,22 +46,17 @@ export default {
     {
       name: 'link',
       type: 'object',
-      title: 'Podcast Episode Link',
+      title: 'Blog Link',
       fields: [
         {
-          name: 'spotifyLink',
+          name: 'mediumLink',
           type: 'string',
-          title: 'Spotify Episode Link'
+          title: 'Medium Episode Link'
         },
         {
           name: 'youtubeLink',
           type: 'string',
-          title: 'Youtube Episode Link'
-        },
-        {
-          name: 'mediumLink',
-          type: 'string',
-          title: 'Medium Blog Episode Link'
+          title: 'Youtube Link'
         },
         {
           name: 'githubLink',
@@ -76,23 +71,6 @@ export default {
       ]
     },
     {
-      name: 'category',
-      type: 'object',
-      title: 'Technology Category',
-      fields: [
-        {
-          name: 'podcastType',
-          type: 'string',
-          title: 'Podcast Type',
-        },
-        {
-          name: 'podcastEcosystem',
-          type: 'string',
-          title: 'Podcast Ecosystem',
-        },
-      ],
-    },
-    {
       name: 'socials',
       type: 'object',
       title: 'Social Media Handles (Optional)',
@@ -100,24 +78,41 @@ export default {
         {
           name: 'twitter',
           type: 'string',
-          title: 'X formely Twitter',
+          title: 'X formely Twitter Post Link',
         },
         {
           name: 'discord',
           type: 'string',
-          title: 'Discord',
+          title: 'Discord Post Link',
         },
         {
           name: 'telegram',
           type: 'string',
-          title: 'Telegram',
+          title: 'Telegram Post Link',
         }
       ]
     },
     {
-      name: 'guest',
+      name: 'category',
       type: 'object',
-      title: 'Guest Interviewer',
+      title: 'Category',
+      fields: [
+        {
+          name: 'spotlightType',
+          type: 'string',
+          title: 'Spotlight Type',
+        },
+        {
+          name: 'spotlightEcosystem',
+          type: 'string',
+          title: 'Spotlight Ecosystem',
+        },
+      ],
+    },
+    {
+      name: 'author',
+      type: 'object',
+      title: 'Author of Spotlight (Optional)',
       fields: [
         {
           name: 'name',
@@ -132,7 +127,7 @@ export default {
         {
           name: 'imageUrl',
           type: 'image',
-          title: 'Image Url (Optional)',
+          title: 'Image Url',
         },
         {
           name: 'imageUrlLink',
@@ -140,9 +135,9 @@ export default {
           title: 'Image Url Link (Optional)',
         },
         {
-          name: 'guestLink',
+          name: 'authorLink',
           type: 'string',
-          title: 'Guest Link',
+          title: 'Author Link',
         },
       ],
     },
