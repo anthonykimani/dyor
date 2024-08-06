@@ -199,7 +199,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-background px-6 pb-4">
             <div className="flex h-16 shrink-0 items-center">
-              <Link href="/dashboard">DYOR</Link>
+              <Link href="/">Do Your Own Research</Link>
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">

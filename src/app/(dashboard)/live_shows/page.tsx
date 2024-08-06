@@ -1,11 +1,13 @@
+import { LiveShowContainer } from '@/components/shared/liveshows'
 import React from 'react'
 
-const LiveShows = () => {
+const LiveShowsPage = () => {
   return (
     <div>
-      Live Shows
+      {/* @ts-expect-error */} 
+      <LiveShowContainer />
     </div>
   )
 }
 
-export default LiveShows
+export default LiveShowsPage

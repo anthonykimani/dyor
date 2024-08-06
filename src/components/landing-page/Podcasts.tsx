@@ -3,6 +3,8 @@ import Image from "next/image";
 import pilot from "../../assets/pilot.png";
 import { client, urlFor } from "@/lib/sanity";
 import { PodcastInterface } from "@/types/interface";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 async function getData() {
   const query = `*[_type == 'podcast'] | order(_createdAt desc){
@@ -46,13 +48,19 @@ export const Podcasts = async () => {
         {/* Featured Podcast */}
         <div className="grid grid-cols-1 md:grid-cols-5  place-items-start">
           {data
-            .filter((podcast: PodcastInterface) => podcast.podcastType === "Guides")
+            .filter(
+              (podcast: PodcastInterface) => podcast.podcastType === "Guides"
+            )
             .map((podcast: PodcastInterface) => (
-              <div key={podcast.id} className="flex flex-col col-span-3 gap-4">
+              <Link
+                href={`/podcast/${podcast.currentSlug}`}
+                key={podcast.id}
+                className="flex flex-col col-span-3 gap-4"
+              >
                 {podcast.imageUrl ? (
                   <Image
-                    src={urlFor(podcast.imageUrl).url()}
-                    alt="Blog Post Image"
+                    src={podcast.imageUrl}
+                    alt=""
                     width={600}
                     height={600}
                     className="rounded-lg object-cover aspect-square"
@@ -68,16 +76,19 @@ export const Podcasts = async () => {
                 )}
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold">{podcast.title}</h1>
-                  <p className="text-muted-foreground">Hosted by {podcast.authorName}</p>
+                  <p className="text-muted-foreground">
+                    Hosted by {podcast.authorName}
+                  </p>
                   <p className="text-sm leading-relaxed">
                     {podcast.description}
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           <div className="space-y-8 col-span-2">
             {data.map((podcast: PodcastInterface) => (
-              <div
+              <Link
+                href={`/podcast/${podcast.currentSlug}`}
                 key={podcast.id}
                 className="grid grid-cols-[100px_1fr] gap-4 border-b pb-4 last:border-b-0 items-center sm:items-start"
               >
@@ -107,7 +118,7 @@ export const Podcasts = async () => {
                     {podcast.description}
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

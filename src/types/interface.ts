@@ -75,3 +75,58 @@ export interface Article {
     headings?: Array<HTMLHeadElement | string>;
     content: any; // Specify a more detailed type if you know the structure of items in the array
   }
+
+
+  export interface LiveshowInterface {
+    id: number;
+    title: string;
+    currentSlug: any; // Typically would use a more specific type tailored to what a 'slug' should represent
+    imageUrl: any; // Adjust the type according to the image representation you need
+    imageUrlLink: string;
+    description: string;
+    dateTime: string;
+    mediumLink: string;
+    youtubeLink: string;
+    githubLink: string;
+    projectLink: string;
+    twitterLink: string;
+    discordLink: string;
+    telegramLink: string;
+    liveshowType: string;
+    liveshowEcosystem: string;
+    authorName: string;
+    authorRole: string;
+    authorImageUrl: any;
+    authorImageUrlLink: any;
+    authorLink: string;
+    headings?: Array<HTMLHeadElement | string>;
+    content: any; // Specify a more detailed type if you know the structure of items in the array
+  }
+
+
+  
+  export interface AirdropInterface {
+    id: number;
+    title: string;
+    currentSlug: any; // Typically would use a more specific type tailored to what a 'slug' should represent
+    imageUrl: any; // Adjust the type according to the image representation you need
+    imageUrlLink: string;
+    description: string;
+    dateTime: string;
+    mediumLink: string;
+    youtubeLink: string;
+    githubLink: string;
+    projectLink: string;
+    twitterLink: string;
+    discordLink: string;
+    telegramLink: string;
+    airdropType: string;
+    airdropEcosystem: string;
+    authorName: string;
+    authorRole: string;
+    authorImageUrl: any;
+    authorImageUrlLink: any;
+    authorLink: string;
+    headings?: Array<HTMLHeadElement | string>;
+    content: any; // Specify a more detailed type if you know the structure of items in the array
+  }

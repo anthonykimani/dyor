@@ -1,4 +1,4 @@
-import Articles from '@/components/dashboard/articles/articles'
+import Articles from '@/components/shared/articles'
 import React from 'react'
 
 const ArticlesPage = () => {

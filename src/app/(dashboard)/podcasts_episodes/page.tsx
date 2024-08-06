@@ -1,9 +1,11 @@
+import { Podcasts } from '@/components/landing-page/Podcasts'
 import React from 'react'
 
 const PodcastEpisodes = () => {
   return (
     <div>
-      Podcast Episodes
+      {/* @ts-expect-error */}
+      <Podcasts />
     </div>
   )
 }

@@ -30,7 +30,7 @@ const routeList: RouteProps[] = [
     label: "Articles",
   },
   {
-    href: "/podcast_episodes",
+    href: "/podcasts_episodes",
     label: "Podcast Episodes",
   },
   {
@@ -60,14 +60,14 @@ export const Navbar = () => {
       <NavigationMenu className="mx-auto">
         <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between ">
           <NavigationMenuItem className="font-bold flex">
-            <a
+            <Link
               rel="noreferrer noopener"
               href="/"
               className="ml-2 font-bold text-xl flex"
             >
            
-              DYOR
-            </a>
+              Do Your Own Research Podcast
+            </Link>
           </NavigationMenuItem>
 
           {/* mobile */}
