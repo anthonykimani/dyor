@@ -59,9 +59,9 @@ export const Podcasts = async () => {
               >
                 {podcast.imageUrl ? (
                   <Image
-                    src={podcast.imageUrl}
+                    src={urlFor(podcast.imageUrl).url()}
                     alt=""
-                    width={600}
+                    width={700}
                     height={600}
                     className="rounded-lg object-cover aspect-square"
                   />

@@ -75,19 +75,29 @@ const social = [
 
 async function getData(slug: string) {
   const query = `*[_type == 'airdrop' && slug.current=='${slug}']{
-    title,
+      title,
       description,
       "currentSlug": slug.current,
-      "imageUrl": imageUrl.asset._ref,
-      content,
+      "imageUrl": image.imageUrl.asset._ref,
+      "imageUrlLink": image.imageUrlLink,
       "dateTime": _createdAt,
-      "updatedAt": _updatedAt,
-      category,
-      "headings": content[style in ["h1", "h2", "h3", "h4", "h5", "h6"]],
-      "categoryTitle":category.title,
+      "mediumLink": link.mediumLink,
+      "youtubeLink": link.youtubeLink,
+      "githubLink": link.githubLink,
+      "projectLink": link.projectLink,
+      "twitterLink": socials.twitterLink,
+      "discordLink": socials.discordLink,
+      "telegramLink": socials.telegramLink,
+      "airdropType": category.airdropType,
+      "airdropEcosystem": category.airdropEcosystem,
       "authorName":author.name,
       "authorRole":author.role,
       "authorImageUrl": author.imageUrl.asset._ref,
+      "authorImageUrlLink": author.imageUrlLink,
+      "authorLink":author.authorLink,
+      content,
+      "headings": content[style in ["h1", "h2", "h3", "h4", "h5", "h6"]],
+      "updatedAt": _updatedAt,
 }[0]`;
 
   const data = await client.fetch(query, {}, { cache: "no-store" });
@@ -106,13 +116,23 @@ const BlogStructure = async ({ params }: { params: { slug: string } }) => {
             <h2 className="text-deepBlue text-center font-bold text-3xl md:text-4xl lg:text-5xl mb-5">
               {blog.title}
             </h2>
-            <Image
-              src={urlFor(blog.imageUrl).url()}
-              width={1000}
-              height={500}
-              alt=""
-              className="h-[200px] sm:h-[500px] w-[95%] sm:w-full object-cover my-[20px] rounded-md"
-            />
+            {blog.imageUrl ? (
+              <Image
+                src={urlFor(blog.imageUrl).url()}
+                alt="Blog Post Image"
+                width={1000}
+                height={500}
+                className="h-[200px] sm:h-[500px] w-[95%] sm:w-full object-cover my-[20px] rounded-md"
+              />
+            ) : (
+              <Image
+                src={blog.imageUrlLink}
+                alt="Podcast Cover Art"
+                width={1000}
+                height={500}
+                className="h-[200px] sm:h-[500px] w-[95%] sm:w-full object-cover my-[20px] rounded-md"
+              />
+            )}
           </article>
           <div className="flex flex-col-reverse md:flex-row prose prose-base sm:prose-xl min-w-full text-gray-400 prose-invert prose-li:marker:text-primary prose-a:text-primary">
             <div className="mx-[10px] md:mx-[0px] rounded-3xl p-4 sm:p-5 md:p-10  bg-slate-100 bg-opacity-5">

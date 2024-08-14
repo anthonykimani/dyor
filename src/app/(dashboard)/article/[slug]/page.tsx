@@ -116,7 +116,7 @@ const ArticleStructure = async ({ params }: { params: { slug: string } }) => {
             <h2 className="text-deepBlue text-center font-bold text-3xl md:text-4xl lg:text-5xl mb-5">
               {blog.title}
             </h2>
-                        {blog.imageUrl ? (
+            {blog.imageUrl ? (
               <Image
                 src={urlFor(blog.imageUrl).url()}
                 alt="Blog Post Image"
