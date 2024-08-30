@@ -1,4 +1,3 @@
-
 import { ArrowRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import {
   Carousel,
@@ -44,33 +43,79 @@ async function getData() {
 }
 
 const Hero = async () => {
-
   const data = await getData();
   return (
-    <section className="w-full pt-12 md:pt-24 lg:pt-32">
-      <div className="container grid grid-cols-1 gap-10 md:grid-cols-3  md:gap-16">
-        <div className="col-span-2">
+    <section className="w-full pt-12 md:pt-24 lg:pt-32 flex flex-col items-center">
+      <div className="max-w-[80%] mb-10">
+        <h2 className="text-white text-center text-3xl xsm:text-[40px] font-bold my-10 ">
+          What is the Do Your Own Research Show?
+        </h2>
+        <h4 className="text-white text-center text-base">
+          We cover narratives that happen the fast-paced crypto landscape
+        </h4>
+      </div>
+      <div className="w-full flex flex-col md:flex-row px-5 md:px-20">
+        <div className="space-y-6 w-full md:w-[50%] pr-4">
+          <div className="grid gap-4">
+            <h2 className="font-bold text-2xl">Trending News</h2>
+            {data.map((article: Article) => (
+              <Link
+                key={article.id}
+                href={`/article/${article.currentSlug}`}
+                className="group flex rounded-lg transition-colors hover:bg-muted-foreground/10"
+                prefetch={false}
+              >
+                <div className="w-[250px] h-[160px] overflow-hidden rounded-lg">
+                  <Image
+                    src={urlFor(article.imageUrl).url()}
+                    alt="Blog article Image"
+                    width={0}
+                    height={0}
+                    className="object-cover w-full h-full "
+                  />
+                </div>
+                <div className="w-full p-2">
+                  <h4 className="text-lg font-medium group-hover:text-primary">
+                    {article.title}
+                  </h4>
+                  <p className="line-clamp-2 text-muted-foreground">
+                    {article.description}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div className="w-full md:w-[50%]">
           <Carousel className="rounded-lg">
-          <CarouselContent>
+            <CarouselContent>
               {data.map((article: Article) => (
                 <CarouselItem key={article.id}>
                   <div className="relative h-[400px] overflow-hidden rounded-lg">
-                    {article.imageUrl ? <Image
-                      src={urlFor(article.imageUrl).url()}
-                      alt="Blog Post Image"
-                      width={0}
-                      height={0}
-                      className="object-cover w-full h-full"
-                    /> : <Image
-                    src={article.imageUrlLink}
-                    alt="Blog Post Image"
-                    width={0}
-                    height={0}
-                    className="object-cover w-full h-full"
-                  />}
+                    {article.imageUrl ? (
+                      <Image
+                        src={urlFor(article.imageUrl).url()}
+                        alt="Blog Post Image"
+                        width={0}
+                        height={0}
+                        className="object-cover w-full h-full"
+                      />
+                    ) : (
+                      <Image
+                        src={article.imageUrlLink}
+                        alt="Blog Post Image"
+                        width={0}
+                        height={0}
+                        className="object-cover w-full h-full"
+                      />
+                    )}
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                      <h3 className="text-2xl font-bold text-white">{article.title}</h3>
-                      <p className="mt-2 text-white/80">{article.description}</p>
+                      <h3 className="text-2xl font-bold text-white">
+                        {article.title}
+                      </h3>
+                      <p className="mt-2 text-white/80">
+                        {article.description}
+                      </p>
                       <Link
                         href={`/article/${article.currentSlug}`}
                         className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-white"
@@ -87,40 +132,6 @@ const Hero = async () => {
             <CarouselPrevious />
             <CarouselNext />
           </Carousel>
-        </div>
-        <div className="space-y-6">
-          <div className="grid gap-4">
-            <h2 className="font-bold text-2xl">Latest Articles</h2>
-            {
-              data.map((article:Article) => (
-                <Link
-                  key={article.id}
-                  href={`/article/${article.currentSlug}`}
-                  className="group grid grid-cols-[48px_1fr] items-start gap-4 rounded-lg bg-muted p-4 transition-colors hover:bg-muted-foreground/10"
-                  prefetch={false}
-                >
-                  <div className="h-12 w-12 overflow-hidden rounded-lg">
-                    <Image
-                      src={urlFor(article.imageUrl).url()}
-                      alt="Blog article Image"
-                      width={48}
-                      height={48}
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-medium group-hover:text-primary">
-                      {article.title}
-                    </h4>
-                    <p className="line-clamp-2 text-muted-foreground">
-                      {article.description}
-                    </p>
-                  </div>
-                </Link>
-              ))
-            }
-           
-          </div>
         </div>
       </div>
     </section>

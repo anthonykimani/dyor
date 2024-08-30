@@ -6,12 +6,14 @@ import { Navbar } from "@/components/landing-page/Navbar";
 import { Newsletter } from "@/components/landing-page/Newsletter";
 import { ScrollToTop } from "@/components/landing-page/ScrollToTop";
 import { Team } from "@/components/landing-page/Team";
+import HeroSection from "@/components/landing-page/HeroSection";
 
 export default async function Home() {
   return (
     <main className="">
       {/* Hero section */}
       <Navbar />
+      <HeroSection />
       {/* @ts-expect-error */}
       <Hero />
       {/* @ts-expect-error */}
