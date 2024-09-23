@@ -11,11 +11,16 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
+import Luffy from "@/assets/luffy.jpeg"
+import BadMan from "@/assets/BadMan.jpg"
+import Chizaa from "@/assets/chizaa.jpg"
+import Image, { StaticImageData } from "next/image";
 
 interface TeamProps {
-  imageUrl: string;
+  imageUrl: StaticImageData;
   name: string;
   position: string;
+  description: string;
   socialNetworks: SociaNetworkslProps[];
 }
 
@@ -26,9 +31,10 @@ interface SociaNetworkslProps {
 
 const teamList: TeamProps[] = [
   {
-    imageUrl: "https://i.pravatar.cc/150?img=35",
+    imageUrl: Luffy,
     name: "Frank Hazard",
     position: "Founder",
+    description: "Blockchain Developer and Web3 Podcaster",
     socialNetworks: [
       { name: "Linkedin", url: "http://linkedin.com" },
       {
@@ -42,9 +48,10 @@ const teamList: TeamProps[] = [
     ],
   },
   {
-    imageUrl: "https://i.pravatar.cc/150?img=60",
+    imageUrl: Chizaa,
     name: "Dennis Kimathi",
     position: "Chief Technology",
+    description: "Depin and Onchain Analyst",
     socialNetworks: [
       { name: "Linkedin", url: "http://linkedin.com" },
       {
@@ -58,9 +65,10 @@ const teamList: TeamProps[] = [
     ],
   },
   {
-    imageUrl: "https://i.pravatar.cc/150?img=36",
+    imageUrl: BadMan,
     name: "Anthony Kimani",
     position: "Chief Research",
+    description: "Zero Knowledge Researcher",
     socialNetworks: [
       { name: "Linkedin", url: "http://linkedin.com" },
 
@@ -100,19 +108,18 @@ export const Team = () => {
       </h2>
 
       <p className="mt-4 mb-10 text-xl text-muted-foreground">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-        dolor pariatur sit!
+        Core Contributors
       </p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 gap-y-10">
         {teamList.map(
-          ({ imageUrl, name, position, socialNetworks }: TeamProps) => (
+          ({ imageUrl, name, position, socialNetworks, description }: TeamProps) => (
             <Card
               key={name}
               className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center"
             >
               <CardHeader className="mt-8 flex justify-center items-center pb-2">
-                <img
+                <Image
                   src={imageUrl}
                   alt={`${name} ${position}`}
                   className="absolute -top-12 rounded-full w-24 h-24 aspect-square object-cover"
@@ -124,7 +131,7 @@ export const Team = () => {
               </CardHeader>
 
               <CardContent className="text-center pb-2">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p>{description}</p>
               </CardContent>
 
               <CardFooter>
