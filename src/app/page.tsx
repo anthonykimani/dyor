@@ -10,7 +10,7 @@ import HeroSection from "@/components/landing-page/HeroSection";
 
 export default async function Home() {
   return (
-    <main className="">
+    <main className="bg-site  bg-no-repeat w-full">
       {/* Hero section */}
       <Navbar />
       <HeroSection />

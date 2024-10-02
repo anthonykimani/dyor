@@ -18,6 +18,11 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+  			poppins: ["Poppins", "sans-serif"],
+  			DM: ["DM Sans", "sans-serif"],
+  			melodrama: ['var(--font-melodrama)']
+  		},
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -52,6 +57,9 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      backgroundImage: {
+        "site": "url('/background.svg')",
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -11,6 +11,7 @@ import Image from "next/image";
 import pilot from "../../assets/pilot.png";
 import { client, urlFor } from "@/lib/sanity";
 import { Article } from "@/types/interface";
+import { format } from "date-fns";
 
 async function getData() {
   const query = `*[_type == 'article'] | order(_createdAt desc){
@@ -45,27 +46,30 @@ async function getData() {
 const Hero = async () => {
   const data = await getData();
   return (
-    <section className="w-full pt-12 md:pt-24 lg:pt-32 flex flex-col items-center">
-      <div className="max-w-[80%] mb-10">
-        <h2 className="text-white text-center text-3xl xsm:text-[40px] font-bold my-10 ">
-          What is the Do Your Own Research Show?
-        </h2>
-        <h4 className="text-white text-center text-base">
+    <section className="font-DM w-full pt-12 md:pt-24 lg:pt-32 flex flex-col items-center container py-24 sm:py-24">
+      <div className="my-10">
+        <h2 className="text-white text-center text-3xl xsm:text-[40px] md:text-4xl font-bold my-10 ">
           We cover narratives that happen the fast-paced crypto landscape
+        </h2>
+        <h4 className="text-[#8a96abb6] text-center text-base">
+          Discovered latest top-notch stories from world wide community, quality
+          informative podcast and verified creators.
         </h4>
       </div>
-      <div className="w-full flex flex-col md:flex-row px-5 md:px-20">
+      <div className="w-full flex flex-col md:flex-row justify-around">
         <div className="space-y-6 w-full md:w-[50%] pr-4">
           <div className="grid gap-4">
-            <h2 className="font-bold text-2xl">Trending News</h2>
+            <h2 className="font-semibold text-2xl font-poppins">
+              Trending News
+            </h2>
             {data.map((article: Article) => (
               <Link
                 key={article.id}
                 href={`/article/${article.currentSlug}`}
-                className="group flex rounded-lg transition-colors hover:bg-muted-foreground/10"
+                className="group flex rounded-lg transition-colors hover:bg-muted-foreground/10 p-2"
                 prefetch={false}
               >
-                <div className="w-[250px] h-[160px] overflow-hidden rounded-lg">
+                <div className="w-[400px] h-[160px] overflow-hidden rounded-lg">
                   <Image
                     src={urlFor(article.imageUrl).url()}
                     alt="Blog article Image"
@@ -74,7 +78,10 @@ const Hero = async () => {
                     className="object-cover w-full h-full "
                   />
                 </div>
-                <div className="w-full p-2">
+                <div className="w-full p-5 flex flex-col justify-around">
+                  <time dateTime={article.dateTime} className="text-gray-500 ">
+                    {format(new Date(article.dateTime), "PPpp")}
+                  </time>
                   <h4 className="text-lg font-medium group-hover:text-primary">
                     {article.title}
                   </h4>
@@ -86,12 +93,12 @@ const Hero = async () => {
             ))}
           </div>
         </div>
-        <div className="w-full md:w-[50%]">
+        <div className="w-full md:w-[50%] px-16">
           <Carousel className="rounded-lg">
             <CarouselContent>
               {data.map((article: Article) => (
                 <CarouselItem key={article.id}>
-                  <div className="relative h-[400px] overflow-hidden rounded-lg">
+                  <div className="relative h-[600px] w-[600px] overflow-hidden rounded-lg">
                     {article.imageUrl ? (
                       <Image
                         src={urlFor(article.imageUrl).url()}
