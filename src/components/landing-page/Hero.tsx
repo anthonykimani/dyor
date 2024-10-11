@@ -66,7 +66,7 @@ const Hero = async () => {
               <Link
                 key={article.id}
                 href={`/article/${article.currentSlug}`}
-                className="group flex rounded-lg transition-colors hover:bg-muted-foreground/10 p-2"
+                className="group flex rounded-lg transition-colors bg-muted-foreground/10 hover:bg-muted-foreground/20 p-2"
                 prefetch={false}
               >
                 <div className="w-[400px] h-[160px] overflow-hidden rounded-lg">

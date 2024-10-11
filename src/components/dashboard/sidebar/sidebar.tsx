@@ -125,7 +125,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                       <ul role="list" className="flex flex-1 flex-col gap-y-7">
                       <li>
                          
-                         <ul role="list" className="-mx-2 mt-2 space-y-1">
+                         {/* <ul role="list" className="-mx-2 mt-2 space-y-1">
                            {teams.map((team) => (
                              <li key={team.name}>
                                <Link
@@ -144,7 +144,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                                </Link>
                              </li>
                            ))}
-                         </ul>
+                         </ul> */}
                        </li>
                         <li>
                         <div className="text-xs font-semibold leading-6 text-gray-400">
@@ -204,7 +204,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
                 <li>
-                  <ul role="list" className="-mx-2 mt-2 space-y-1">
+                  {/* <ul role="list" className="-mx-2 mt-2 space-y-1">
                     {teams.map((team) => (
                       <li key={team.name}>
                         <Link
@@ -223,7 +223,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                         </Link>
                       </li>
                     ))}
-                  </ul>
+                  </ul> */}
                 </li>
                 <li>
                   <div className="text-xs font-semibold leading-6 text-gray-400">
@@ -332,7 +332,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                 />
 
                 {/* Profile dropdown */}
-                <Menu as="div" className="relative">
+                {/* <Menu as="div" className="relative">
                   <MenuButton className="-m-1.5 flex items-center p-1.5">
                     <span className="sr-only">Open user menu</span>
                     <img
@@ -380,7 +380,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                       ))}
                     </MenuItems>
                   </Transition>
-                </Menu>
+                </Menu> */}
               </div>
             </div>
           </div>

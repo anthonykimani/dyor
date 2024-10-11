@@ -107,7 +107,7 @@ export const Footer = () => {
             alt="Company name"
           />
           <p className="text-sm leading-6 text-gray-300">
-            Making the world a better place through constructing elegant hierarchies.
+            Discovered latest top-notch stories from world wide community, quality informative podcast and verified creators.
           </p>
           <div className="flex space-x-6">
             {navigation.social.map((item) => (
@@ -174,7 +174,7 @@ export const Footer = () => {
         </div>
       </div>
       <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
-        <p className="text-xs leading-5 text-gray-400">&copy; 2020 Your Company, Inc. All rights reserved.</p>
+        <p className="text-xs leading-5 text-gray-400">&copy; DYOR Podcast 2024, Inc. All rights reserved.</p>
       </div>
     </div>
   </footer>

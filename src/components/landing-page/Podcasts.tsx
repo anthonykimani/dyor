@@ -30,7 +30,7 @@ async function getData() {
       "authorLink":author.authorLink,
       content,
       "updatedAt": _updatedAt,
-  }`;
+  }[0...2]`;
 
   const data = await client.fetch(query, {}, { cache: "no-store" });
   return data;
@@ -39,7 +39,7 @@ async function getData() {
 export const Podcasts = async () => {
   const data = await getData();
   return (
-    <section id="cta" className="bg-muted/50 py-16 ">
+    <section id="cta" className=" py-16 ">
       <div className="container">
         <h2 className="text-3xl md:text-4xl font-bold py-6 ">
           Podcast Episodes
@@ -62,16 +62,16 @@ export const Podcasts = async () => {
                     src={urlFor(podcast.imageUrl).url()}
                     alt=""
                     width={700}
-                    height={600}
-                    className="rounded-lg object-cover aspect-square"
+                    height={400}
+                    className="rounded-lg object-cover"
                   />
                 ) : (
                   <Image
                     src={podcast.imageUrlLink}
                     alt="Podcast Cover Art"
-                    width={600}
-                    height={600}
-                    className="rounded-lg object-cover aspect-square"
+                    width={700}
+                    height={400}
+                    className="rounded-lg object-cover"
                   />
                 )}
                 <div className="space-y-2">
@@ -90,30 +90,27 @@ export const Podcasts = async () => {
               <Link
                 href={`/podcast/${podcast.currentSlug}`}
                 key={podcast.id}
-                className="grid grid-cols-[100px_1fr] gap-4 border-b pb-4 last:border-b-0 items-center sm:items-start"
+                className="grid grid-cols-[200px_3fr] gap-4 border-b  last:border-b-0 items-center sm:items-start"
               >
                 {podcast.imageUrl ? (
                   <Image
                     src={urlFor(podcast.imageUrl).url()}
                     alt="Blog Post Image"
-                    width={100}
-                    height={100}
+                    width={300}
+                    height={300}
                     className="rounded-lg object-cover aspect-square"
                   />
                 ) : (
                   <Image
                     src={podcast.imageUrlLink}
                     alt="Blog Post Image"
-                    width={100}
-                    height={100}
-                    className="rounded-lg object-cover aspect-square"
+                    width={300}
+                    height={300}
+                    className="rounded-lg object-cover "
                   />
                 )}
-                <div className="space-y-2">
+                <div className="flex flex-col justify-around h-full">
                   <h3 className="text-lg font-medium">{podcast.title}</h3>
-                  <p className="text-muted-foreground">
-                    Guest: {podcast.authorName} {podcast.authorRole}
-                  </p>
                   <p className="text-sm leading-relaxed">
                     {podcast.description}
                   </p>

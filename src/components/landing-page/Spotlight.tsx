@@ -98,7 +98,7 @@ export const Spotlight = async () => {
   const data = await getData();
   return (
     <section id="about" className="container py-24 sm:py-24">
-      <div className="bg-muted/50 border rounded-lg py-12">
+      <div className="bg-muted-foreground/10 border rounded-lg py-12">
         <div className="px-6 flex flex-col-reverse md:flex-row gap-8 md:gap-12">
           <div className="bg-green-0 flex flex-col justify-between">
             <div className="pb-6">
@@ -115,7 +115,7 @@ export const Spotlight = async () => {
                     {data.map((spotlight: SpotlightInterface) => (
                       <article
                         key={spotlight.id}
-                        className="flex flex-col items-start justify-between"
+                        className="flex flex-col items-start justify-between hover:bg-muted-foreground/10 p-5 rounded-xl"
                       >
                         <div className="relative w-full">
                           {
